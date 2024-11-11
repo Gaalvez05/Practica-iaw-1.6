@@ -52,5 +52,24 @@ sed -i "s#wp-blog-header.php#$WORDPRESS_DIRECTORY/wp-blog-header.php#" /var/www/
 #Modificamos los propietarios y el grupo del directorio /var/www/html
 chown -R www-data:www-data /var/www/html/
 
+# Eliminamos los valores por defecto de las security keys que aparecen en el archivo de configuración.
+sed -i "/AUTH_KEY/d" /var/www/html/miwordpress/wp-config.php
+sed -i "/SECURE_AUTH_KEY/d" /var/www/html/miwordpress/wp-config.php
+sed -i "/LOGGED_IN_KEY/d" /var/www/html/miwordpress/wp-config.php
+sed -i "/NONCE_KEY/d" /var/www/html/miwordpress/wp-config.php
+sed -i "/AUTH_SALT/d" /var/www/html/miwordpress/wp-config.php
+sed -i "/SECURE_AUTH_SALT/d" /var/www/html/miwordpress/wp-config.php
+sed -i "/LOGGED_IN_SALT/d" /var/www/html/miwordpress/wp-config.php
+sed -i "/NONCE_SALT/d" /var/www/html/miwordpress/wp-config.php
 
+#Hacemos una llamada a la API de wordpress para obtener las security keys y almacenamos el resultado en una variable de entorno.
+SECURITY_KEYS=$(curl https://api.wordpress.org/secret-key/1.1/salt/)
 
+# Para evitar posibles problemas con el carácter / vamos a reemplazarlo por el carácter _.
+SECURITY_KEYS=$(echo $SECURITY_KEYS | tr / _)
+
+#Añadimos las security keys al archivo de configuración.
+sed -i "/@-/a $SECURITY_KEYS" /var/www/html/miwordpress/wp-config.php
+
+#Cambiamos el propietario y el grupo al directorio /var/www/html.
+chown -R www-data:www-data /var/www/html/
