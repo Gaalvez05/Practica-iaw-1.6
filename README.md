@@ -191,4 +191,5 @@ chown -R www-data:www-data /var/www/html/
 ![](/img/Captura%20de%20pantalla%202024-11-17%20193101.png)
 ![](/img/Captura%20de%20pantalla%202024-11-17%20193158.png)
 ![](//img/Captura%20de%20pantalla%202024-11-17%20193221.png)
+Como vemos en la URL no aparece igual que cuando lo hemos instalado en el directorio raiz, nos sale el nommbre de dominio que hemos configurado en la pagina web `No-IP`.
 ![](/img/Captura%20de%20pantalla%202024-11-17%20193403.png)
