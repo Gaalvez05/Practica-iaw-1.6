@@ -69,7 +69,11 @@ chown -R www-data:www-data /var/www/html/
 ## 1.10 COnfigurar el archivo `.htaccess`.
 Por último, para que todo lo anterior funcione deberemos añadir la directiva `AllowOverride All` en el archivo de configuracioón `000-default.conf` para que asi el servidor web Apache pueda leer el archivo `.htaccess`.
 
-![]()
+![](/img/Captura%20de%20pantalla%202024-11-17%20193728.png)
+![](/img/Captura%20de%20pantalla%202024-11-17%20193753.png)
+![](/img/Captura%20de%20pantalla%202024-11-17%20193811.png)
+![](/img/Captura%20de%20pantalla%202024-11-17%20193828.png)
+![](/img/Captura%20de%20pantalla%202024-11-17%20193845.png)
 
 # 2 Instalación de WordPress en su propio directorio
 En esta otra parte de la practica vamos a explicare como llevar a cabo la instalación de **WordPress** en su propio directorio mediante el archivo `deply_wordpress_own_directory.sh` en la carpeta `scripts`.
